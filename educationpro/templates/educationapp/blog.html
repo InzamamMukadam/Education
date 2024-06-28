@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech2 etc Tutorial</title>
+
+    {% load static %}
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <img src="{% static 'images/logo.svg' %}" alt="">
+        <div class="navigation">
+            <ul>
+                <i id="menu-close" class="fas fa-times"></i>
+                {% if request.session.username is None %}
+
+                <li><a href="{% url 'index'%}">Home</a></li>
+                <li><a href="{% url 'about'%}">About</a></li>
+                <li><a class="active" href="{% url 'blog' %}">Blog</a></li>
+                <li><a href="{% url 'course' %}">Courses</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a  href="{% url 'login' %}">Student Login</a></li>
+                <li><a href="{% url 'ilogin' %}">Instructor Login</a></li>
+                {% endif %}
+
+                {% if request.session.username is not None %}
+
+                <li><a href="{% url 'index'%}">Home</a></li>
+                <li><a href="{% url 'about'%}">About</a></li>
+                <li><a class="active" href="{% url 'blog' %}">Blog</a></li>
+                <li><a href="{% url 'course' %}">Courses</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a  href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'ilogin' %}">Instructor Login</a></li>
+                {% endif %}
+            </ul>
+            <img id="menu-btn" src="{% static 'images/menu.png' %}" alt="">
+        </div>
+    </nav>
+
+    <!-- Home -->
+    <section id="about-home">
+        <h2>BLOG</h2>
+    </section>
+
+    <sectin id="blog-container">
+        <div class="blogs">
+            <div class="post">
+                <img src="{% static 'images/b1.jpg' %}" alt="">
+                <h3>Learn Web Development in the Easiest Way</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim alias illo tempore beatae facere eaque molestias obcaecati nemo, assumenda placeat numquam perferendis maxime excepturi sapiente quo omnis provident ratione nisi!</p>
+                <a href="post.html">Read More</a>
+            </div>
+            <div class="post">
+                <img src="{% static 'images/b2.jpg' %}" alt="">
+                <h3>Learn Web Development in the Easiest Way</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim alias illo tempore beatae facere eaque molestias obcaecati nemo, assumenda placeat numquam perferendis maxime excepturi sapiente quo omnis provident ratione nisi!</p>
+                <a href="#">Read More</a>
+            </div>
+            <div class="post">
+                <img src="{% static 'images/b3.jpg' %}" alt="">
+                <h3>Learn Web Development in the Easiest Way</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim alias illo tempore beatae facere eaque molestias obcaecati nemo, assumenda placeat numquam perferendis maxime excepturi sapiente quo omnis provident ratione nisi!</p>
+                <a href="#">Read More</a>
+            </div>
+            <div class="post">
+                <img src="{% static 'images/b4.png' %}" alt="">
+                <h3>Learn Web Development in the Easiest Way</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim alias illo tempore beatae facere eaque molestias obcaecati nemo, assumenda placeat numquam perferendis maxime excepturi sapiente quo omnis provident ratione nisi!</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+        <div class="cate">
+            <h2>Categories</h2>
+            <hr>
+            <a href="#">Web Development</a>
+            <hr>
+            <a href="#">Web Design</a>
+            <hr>
+            <a href="#">App Development</a>
+            <hr>
+            <a href="#">Frontend Web Development</a>
+            <hr>
+            <a href="#">Python Programming</a>
+            <hr>
+            <a href="#">JavaScript</a>
+            <hr>
+        </div>
+    </sectin>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-col">
+            <h3>Top Products</h3>
+            <li>Marketing Service</li>
+            <li>Marketing Service</li>
+            <li>Marketing Service</li>
+            <li>Marketing Service</li>
+        </div>
+        <div class="footer-col">
+            <h3>Top Products</h3>
+            <li>Marketing Service</li>
+            <li>Marketing Service</li>
+            <li>Marketing Service</li>
+            <li>Marketing Service</li>
+        </div>
+        <div class="footer-col">
+            <h3>Top Products</h3>
+            <li>Marketing Service</li>
+            <li>Marketing Service</li>
+            <li>Marketing Service</li>
+            <li>Marketing Service</li>
+        </div>
+        <div class="footer-col">
+            <h3>Top Products</h3>
+            <li>Marketing Service</li>
+            <li>Marketing Service</li>
+            <li>Marketing Service</li>
+            <li>Marketing Service</li>
+        </div>
+
+        <div class="footer-col">
+            <h3>Newsletter</h3>
+            <p>You can trust us. We only send promo offers.</p>
+            <div class="subscribe">
+                <input type="text" placeholder="Your Email Address">
+                <a class="yellow" href="#">Subscribe</a>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>Copyright @2024 All Rights Reserved</p>
+            <div class="pro-links">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin"></i>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        $('#menu-btn').click(function () {
+            $('nav .navigation ul').addClass('active')
+        });
+        $('#menu-close').click(function () {
+            $('nav .navigation ul').removeClass('active')
+        });
+
+        // Navaigation Bar
+
+    </script>
+
+
+</body>
+
+</html>

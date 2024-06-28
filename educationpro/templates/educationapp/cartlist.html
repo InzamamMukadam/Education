@@ -1,0 +1,196 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+</head>
+
+<body>
+    <form action="placeorder">
+        {%csrf_token%}
+        <table border="1">
+            <tr>
+                <th>EmailId</th>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Product TotalPrice</th>
+                <th>product Quantity</th>
+
+            </tr>
+        <tr>
+                <td>{{i.emailId.emailId}}</td>
+                <td>{{i.cid.id}}</td>
+                <td>{{i.cid.name}}</td>
+                <td>{{i.cid.price}}</td>
+                <td>{{i.totalprice}}</td>
+                <td>{{i.quantity}}</td>
+            </tr>
+        {% for i in cart %}
+
+        <div class="item">
+            <img src="images/1.webp">
+            <div class="info">
+                <div class="name">{{i.emailId.emailId}}</div>
+                <div class="name">{{i.cid.name}}</div>
+                <div class="price">{{i.cid.price}}</div>
+            </div>
+            <div class="quantity">5</div>
+            <div class="returnPrice">{{i.totalprice}}</div>
+        </div>
+        {%endfor%}
+        </table>
+        <input type="submit" value="showorder">
+    </form>
+</body>
+
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart List</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            /* Adjusted width to ensure it's responsive */
+            max-width: 1200px;
+            /* Maximum width */
+            display: flex;
+            flex-direction: column;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .cart-table th,
+        .cart-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            word-wrap: break-word;
+            /* Ensures long text breaks to fit the column */
+
+        }
+
+        .cart-table th {
+            background-color: #f8f8f8;
+        }
+
+        .cart-table td {
+            vertical-align: middle;
+            /* Ensures content is vertically centered */
+        }
+
+        .remove-btn,
+        .checkout-btn {
+            padding: 10px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .remove-btn:hover {
+            background-color: #c82333;
+        }
+
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            background-color: #28a745;
+            margin-top: 10px;
+            text-align: center;
+            /* Center-align the text */
+        }
+
+        .checkout-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form action="placeorder">
+        {%csrf_token%}
+
+        <div class="wrapper">
+            <div class="container">
+                <h2>Cart List</h2>
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Email Id</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Id</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in cart %}
+
+                        <tr>
+
+                            <td>{{i.emailId.emailId}}</td>
+                            <td>{{i.cid.name}}</td>
+                            <td>{{i.cid.price}}</td>
+                            <td>{{i.cid.id}}</td>
+                            <td><button class="remove-btn"><a href="delete/{{i.cid}}">Remove</a></button></td>
+
+                        </tr>
+                        {%endfor%}
+
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+                <button class="checkout-btn" type="submit" value="showorder">Checkout</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
